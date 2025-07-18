@@ -1,0 +1,12 @@
+return {
+  "mattn/emmet-vim",
+  ft = { "html", "css", "javascriptreact", "typescriptreact" }, -- filetypes where it activates
+  init = function()
+    vim.g.user_emmet_install_global = 0
+    vim.cmd([[
+      autocmd FileType html,css,javascriptreact,typescriptreact EmmetInstall
+    ]])
+    -- Optional: change the trigger key from <C-y>, to <Tab> or something else
+    vim.g.user_emmet_leader_key = "<C-y>"
+  end,
+}

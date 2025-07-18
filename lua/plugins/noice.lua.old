@@ -1,0 +1,18 @@
+-- return {
+--   "folke/noice.nvim",
+--   opts = {
+--     messages = {
+--       view = "notify",
+--       view_error = "notify",
+--       view_warn = "notify",
+--     },
+--     routes = {
+--       {
+--         filter = { event = "msg_show", kind = "echo" },
+--         opts = { skip = false },
+--       },
+--     },
+--     -- 👇 important line
+--     redirect = { filter = ".*", view = "popup" },
+--   },
+-- }
