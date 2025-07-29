@@ -14,6 +14,17 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- vim.treesitter.language.register("rust", "rust_with_rstml")
+-- vim.filetype.add({
+-- extension = {
+-- rs = function(path, bufnr)
+-- if vim.fn.search("view!", "nw") ~= 0 then
+-- return "rust_with_rstml"
+-- end
+-- return "rust"
+-- end,
+-- },
+-- })
 require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
