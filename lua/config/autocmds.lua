@@ -10,3 +10,12 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.omnifunc = ""
   end,
 })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.rs",
+  callback = function(args)
+    local path = args.file
+    if vim.fn.search("view!%s*{", "nw") ~= 0 then
+      vim.bo.filetype = "rust_with_rstml"
+    end
+  end,
+})

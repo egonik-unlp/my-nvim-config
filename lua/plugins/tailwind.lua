@@ -1,3 +1,4 @@
+-- lua/plugins/tailwind.lua
 return {
   {
     "neovim/nvim-lspconfig",
@@ -6,20 +7,11 @@ return {
         tailwindcss = {
           filetypes = {
             "html",
-            "css",
-            "scss",
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact",
-            "vue",
-            "rust",
-            "rsx",
+            "rust_with_rstml",
           },
           init_options = {
             userLanguages = {
-              rust = "html",
-              rsx = "html",
+              rust_with_rstml = "html",
             },
           },
           settings = {
@@ -28,8 +20,8 @@ return {
                 classRegex = {
                   { 'class\\s*=\\s*"([^"]*)"' },
                   { 'class:\\s*"([^"]*)"' },
-                  { 'class%s*=%s*"([^"]*)"' }, -- para class="..."
-                  { 'class%s*:%s*"([^"]*)"' }, -- para class: "..."
+                  { 'class%s*=%s*"([^"]*)"' },
+                  { 'class%s*:%s*"([^"]*)"' },
                   { "class%s*=%s*%(([^)]*)%)" },
                 },
               },
@@ -45,12 +37,7 @@ return {
               },
             },
           },
-          root_dir = require("lspconfig.util").root_pattern(
-            "tailwind.config.js",
-            "postcss.config.js",
-            "package.json",
-            ".git"
-          ),
+          root_dir = require("lspconfig.util").root_pattern("tailwind.config.js", "package.json", ".git"),
         },
       },
     },
