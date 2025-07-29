@@ -1,17 +1,12 @@
+-- lua/config/rstml.lua
+vim.treesitter.language.register("rust", "rust_with_rstml")
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     opts = {
-      ensure_installed = {
-        "c",
-        "lua",
-        "vim",
-        "vimdoc",
-        "query",
-        "rust",
-        "html",
-      },
+      ensure_installed = { "rust", "html" },
       highlight = { enable = true },
       indent = { enable = true },
     },
@@ -28,13 +23,9 @@ return {
   },
   {
     "windwp/nvim-ts-autotag",
+    ft = { "html", "rust_with_rstml" },
     config = function()
       require("nvim-ts-autotag").setup()
     end,
-  },
-
-  {
-    "nvim-treesitter/playground",
-    cmd = "TSPlaygroundToggle",
   },
 }

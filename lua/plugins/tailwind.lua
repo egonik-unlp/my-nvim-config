@@ -14,25 +14,43 @@ return {
             "typescriptreact",
             "vue",
             "rust",
+            "rsx",
           },
           init_options = {
             userLanguages = {
-              rust = "html", -- Treat .rs files as if they were HTML
+              rust = "html",
+              rsx = "html",
             },
           },
           settings = {
             tailwindCSS = {
               experimental = {
                 classRegex = {
-                  {
-                    'class:\\s*"(.*)"', -- Notice: double escaping not needed in Lua strings
-                  },
-                  { 'class\\s*=\\s*"([^"]*)"' }, -- ← esto matchea class="..."
+                  { 'class\\s*=\\s*"([^"]*)"' },
                   { 'class:\\s*"([^"]*)"' },
+                  { 'class%s*=%s*"([^"]*)"' }, -- para class="..."
+                  { 'class%s*:%s*"([^"]*)"' }, -- para class: "..."
+                  { "class%s*=%s*%(([^)]*)%)" },
                 },
+              },
+              validate = true,
+              lint = {
+                cssConflict = "warning",
+                invalidApply = "error",
+                invalidConfigPath = "error",
+                invalidScreen = "error",
+                invalidTailwindDirective = "error",
+                invalidVariant = "error",
+                recommendedVariantOrder = "warning",
               },
             },
           },
+          root_dir = require("lspconfig.util").root_pattern(
+            "tailwind.config.js",
+            "postcss.config.js",
+            "package.json",
+            ".git"
+          ),
         },
       },
     },
