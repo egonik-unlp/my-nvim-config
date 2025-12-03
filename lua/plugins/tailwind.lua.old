@@ -1,0 +1,29 @@
+-- lua/plugins/tailwind.lua
+
+return {
+  -- LSP Configuration for Tailwind CSS
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        -- Other servers...
+        tailwindcss = {
+          -- Server-specific settings
+          filetypes = { "rust", "html", "css", "heex" },
+          init_options = {
+            userLanguages = {
+              rust = "html",
+            },
+          },
+        },
+      },
+    },
+  },
+
+  -- (Optional but Recommended) A plugin for enhanced Tailwind experience
+  {
+    "luckasRanarison/tailwind-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "nvim-treesitter/nvim-treesitter" },
+    opts = {}, -- Use default configuration
+  },
+}
