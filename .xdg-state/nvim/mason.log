@@ -1,0 +1,2 @@
+[ERROR Sun 04 Jan 2026 11:36:59 AM -03] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="composer", err="ENOENT: no such file or directory"
+[ERROR Sun 04 Jan 2026 11:36:59 AM -03] ...al/share/nvim/lazy/mason.nvim/lua/mason-core/process.lua:226: Failed to spawn process. cmd="php", err="ENOENT: no such file or directory"

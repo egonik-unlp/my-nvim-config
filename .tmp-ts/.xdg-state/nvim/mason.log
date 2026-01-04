@@ -1,0 +1,5 @@
+[ERROR Sun 04 Jan 2026 12:13:06 PM -03] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code 4 and signal 0. 
+[ERROR Sun 04 Jan 2026 12:13:07 PM -03] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:81: Provider "github" "get_latest_release" failed: spawn: wget failed with exit code 4 and signal 0. 
+[ERROR Sun 04 Jan 2026 12:13:07 PM -03] .../share/nvim/lazy/mason.nvim/lua/mason-core/providers.lua:92: No provider implementation succeeded for github.get_latest_release
+[ERROR Sun 04 Jan 2026 12:13:07 PM -03] ...im/lazy/mason.nvim/lua/mason-registry/sources/github.lua:145: Failed to install registry GitHubRegistrySource(repo=mason-org/mason-registry). "Failed to fetch latest registry version from GitHub API."
+[ERROR Sun 04 Jan 2026 12:13:07 PM -03] ...l/share/nvim/lazy/mason.nvim/lua/mason-registry/init.lua:126: Failed to update registries. { "GitHubRegistrySource(repo=mason-org/mason-registry) failed to install: Failed to fetch latest registry version from GitHub API." }
