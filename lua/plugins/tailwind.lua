@@ -3,6 +3,21 @@ return {
   opts = {
     servers = {
       tailwindcss = {
+        -- Restrict the root to Tailwind/PostCSS configs to avoid scanning huge repos.
+        root_dir = function(fname)
+          local util = require("lspconfig.util")
+          return util.root_pattern(
+            "tailwind.config.js",
+            "tailwind.config.cjs",
+            "tailwind.config.mjs",
+            "tailwind.config.ts",
+            "postcss.config.js",
+            "postcss.config.cjs",
+            "postcss.config.mjs",
+            "postcss.config.ts"
+          )(fname)
+        end,
+        single_file_support = false,
         -- exclude a filetype from the default_config
         filetypes_exclude = { "markdown" },
         -- add additional filetypes to the default_config

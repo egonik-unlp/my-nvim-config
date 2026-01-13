@@ -25,14 +25,36 @@ vim.opt.rtp:prepend(lazypath)
 -- end,
 -- },
 -- })
-vim.lsp.enable("gleam")
+local function load_lazyvim_extras()
+  local path = vim.fn.stdpath("config") .. "/lazyvim.json"
+  local ok, data = pcall(function()
+    local contents = table.concat(vim.fn.readfile(path), "\n")
+    if contents == "" then
+      return nil
+    end
+    return vim.json.decode(contents)
+  end)
+  if not ok or type(data) ~= "table" or type(data.extras) ~= "table" then
+    return {}
+  end
+  local specs = {}
+  for _, extra in ipairs(data.extras) do
+    table.insert(specs, { import = extra })
+  end
+  return specs
+end
+
+local extras = load_lazyvim_extras()
+local spec = {
+  -- add LazyVim and import its plugins
+  { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+}
+vim.list_extend(spec, extras)
+-- import/override with your plugins
+table.insert(spec, { import = "plugins" })
+
 require("lazy").setup({
-  spec = {
-    -- add LazyVim and import its plugins
-    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- import/override with your plugins
-    { import = "plugins" },
-  },
+  spec = spec,
   defaults = {
     -- By default, only LazyVim plugins will be lazy-loaded. Your custom plugins will load during startup.
     -- If you know what you're doing, you can set this to `true` to have all your custom plugins lazy-loaded by default.
